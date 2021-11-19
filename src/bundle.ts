@@ -42,6 +42,28 @@ export async function bundle({ config }: { config: Config }): Promise<void> {
         );
       },
     },
+    {
+      title: 'Copy license if exists',
+      async task() {
+        if (await fse.pathExists(path.join(process.cwd(), 'LICENSE'))) {
+          await fse.copy(
+            path.join(process.cwd(), 'LICENSE'),
+            path.join(process.cwd(), config.tsOutputDir as string, 'LICENSE'),
+          );
+        }
+      },
+    },
+    {
+      title: 'Copy readme if exists',
+      async task() {
+        if (await fse.pathExists(path.join(process.cwd(), 'README.md'))) {
+          await fse.copy(
+            path.join(process.cwd(), 'README.md'),
+            path.join(process.cwd(), config.tsOutputDir as string, 'README.md'),
+          );
+        }
+      },
+    },
   ];
   if (config.bundle) {
     if (config.bundle.override) {
