@@ -1,0 +1,43 @@
+{
+  "name": "@banez/npm-tool",
+  "version": "1.0.0",
+  "description": "Tool for build and deploying TypeScript node packages.",
+  "author": "Branislav Vajagić",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "build:ts": "tsc --project tsconfig.json",
+    "bundle": "ts-node src/bin/npm-tool.ts --bundle",
+    "link": "ts-node src/bin/npm-tool.ts  --link",
+    "link:sudo": "ts-node src/bin/npm-tool.ts  --link --sudo",
+    "unlink": "ts-node src/bin/npm-tool.ts  --unlink",
+    "unlink:sudo": "ts-node src/bin/npm-tool.ts  --unlink --sudo",
+    "publish": "ts-node src/bin/npm-tool.ts  --publish",
+    "pack": "ts-node src/bin/npm-tool.ts  --pack",
+    "lint": "eslint . --ext .ts"
+  },
+  "dependencies": {
+    "fs-extra": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/node": "^15.6.2",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "eslint": "^7.27.1",
+    "prettier": "^2.2.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.4.4"
+  },
+  "bin": {
+    "npm-tool": "bin/npm-tool.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bbanez/npm-tool.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Bbanez/npm-tool/issues"
+  },
+  "homepage": "https://github.com/Bbanez/npm-tool#readme"
+}
