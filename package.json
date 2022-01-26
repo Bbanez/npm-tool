@@ -17,6 +17,7 @@
     "lint": "eslint . --ext .ts"
   },
   "dependencies": {
+    "@banez/child_process": "^1.0.3",
     "fs-extra": "^10.0.0"
   },
   "devDependencies": {
