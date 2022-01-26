@@ -3,9 +3,7 @@ export interface Args {
 }
 
 export function parseArgs(rawArgs: string[]): Args {
-  const args: {
-    [key: string]: string;
-  } = {};
+  const args: Args = {};
   let i = 2;
   while (i < rawArgs.length) {
     const arg = rawArgs[i];
@@ -14,6 +12,9 @@ export function parseArgs(rawArgs: string[]): Args {
       value = rawArgs[i + 1].startsWith('--') ? '' : rawArgs[i + 1];
     }
     args[arg] = value;
+    if (!args[arg]) {
+      args[arg] = true;
+    }
     if (value === '') {
       i = i + 1;
     } else {
