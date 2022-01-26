@@ -22,15 +22,15 @@ export async function startNpmTool(): Promise<void> {
   if (!config.tsOutputDir) {
     config.tsOutputDir = 'dist';
   }
-  if (typeof args['--bundle'] === 'string') {
+  if (args['--bundle']) {
     await bundle({ config });
-  } else if (typeof args['--link'] === 'string') {
+  } else if (args['--link']) {
     await link({ config, args });
-  } else if (typeof args['--unlink'] === 'string') {
+  } else if (args['--unlink']) {
     await unlink({ config, args });
-  } else if (typeof args['--publish'] === 'string') {
+  } else if (args['--publish']) {
     await publish({ config });
-  } else if (typeof args['--pack'] === 'string') {
+  } else if (args['--pack']) {
     await pack({ config });
   } else if (config.custom) {
     for (const key in args) {
