@@ -1,5 +1,5 @@
+import { ChildProcess } from '@banez/child_process';
 import * as path from 'path';
-import { Proc } from './process';
 import { createTasks } from './task';
 import type { Config, Task } from './types';
 
@@ -8,7 +8,7 @@ export async function pack({ config }: { config: Config }): Promise<void> {
     {
       title: 'Package output',
       async task() {
-        await Proc.spawn('npm', ['pack'], {
+        await ChildProcess.spawn('npm', ['pack'], {
           cwd: path.join(process.cwd(), config.tsOutputDir as string),
           stdio: 'inherit',
         });

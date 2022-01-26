@@ -1,9 +1,9 @@
 import * as path from 'path';
 import * as fse from 'fs-extra';
 import * as fs from 'fs/promises';
-import { Proc } from './process';
 import { createTasks } from './task';
 import type { Config, Task } from './types';
+import { ChildProcess } from '@banez/child_process';
 
 export async function bundle({ config }: { config: Config }): Promise<void> {
   let tasks: Task[] = [
@@ -18,7 +18,7 @@ export async function bundle({ config }: { config: Config }): Promise<void> {
     {
       title: 'Compile TypeScript',
       async task() {
-        await Proc.spawn('npm', ['run', 'build:ts']);
+        await ChildProcess.spawn('npm', ['run', 'build:ts']);
       },
     },
     {

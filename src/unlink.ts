@@ -1,6 +1,6 @@
+import { ChildProcess } from '@banez/child_process';
 import * as path from 'path';
 import type { Args } from './arg';
-import { Proc } from './process';
 import { createTasks } from './task';
 import type { Config, Task } from './types';
 
@@ -16,12 +16,12 @@ export async function unlink({
       title: 'Unlink package',
       async task() {
         if (args['--sudo']) {
-          await Proc.spawn('sudo', ['npm', 'unlink'], {
+          await ChildProcess.spawn('sudo', ['npm', 'unlink'], {
             cwd: path.join(process.cwd(), config.tsOutputDir as string),
             stdio: 'inherit',
           });
         } else {
-          await Proc.spawn('npm', ['unlink'], {
+          await ChildProcess.spawn('npm', ['unlink'], {
             cwd: path.join(process.cwd(), config.tsOutputDir as string),
             stdio: 'inherit',
           });

@@ -1,8 +1,8 @@
 import * as path from 'path';
 import * as fse from 'fs-extra';
 import type { Config, Task } from './types';
-import { Proc } from './process';
 import { createTasks } from './task';
+import { ChildProcess } from '@banez/child_process';
 
 export async function publish({ config }: { config: Config }): Promise<void> {
   let tasks: Task[] = [
@@ -42,7 +42,7 @@ export async function publish({ config }: { config: Config }): Promise<void> {
     {
       title: 'Publish to NPM',
       async task() {
-        await Proc.spawn(
+        await ChildProcess.spawn(
           'npm',
           [
             'publish',
