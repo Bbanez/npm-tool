@@ -11,6 +11,8 @@ import { pack } from './pack';
 async function getConfig(): Promise<Config> {
   if (await fse.pathExists(path.join(process.cwd(), 'npm-tool.js'))) {
     return await import(path.join(process.cwd(), 'npm-tool.js'));
+  } else if (await fse.pathExists(path.join(process.cwd(), 'npm-tool.cjs'))) {
+    return await import(path.join(process.cwd(), 'npm-tool.cjs'));
   } else {
     return {};
   }
